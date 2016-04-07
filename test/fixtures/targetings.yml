@@ -2,10 +2,10 @@
 
 one:
   places: MyText
-  gender: 1
+  gender_cd: 1
   ad_id: 
 
 two:
   places: MyText
-  gender: 1
+  gender_cd: 1
   ad_id: 

@@ -4,7 +4,7 @@ class AdTest < ActiveSupport::TestCase
   def setup
     @ad = Ad.new(budget: 1000)
     @ad.creatives.new(bid:100, ad_text:'Your ad text.')
-    @ad.targetings.new(gender:'Male', places: ['Recife', 'São Paulo'])
+    @ad.targetings.new(gender: :male, places: ['recife', 'são paulo'])
   end
   
   test "should accept valid attributes and associations" do
@@ -25,7 +25,7 @@ class AdTest < ActiveSupport::TestCase
   
   test "should have at least one creative" do
     ad = Ad.new(budget: 1000)
-    ad.targetings.new(gender:'Male', places: ['Recife', 'São Paulo'])
+    ad.targetings.new(gender: :male, places: ['recife', 'são paulo'])
     assert_not ad.valid?
   end
   
