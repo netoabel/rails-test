@@ -1,0 +1,98 @@
+<h2>New Ad</h2>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= nested_form_for @ad do |f| %>
+      <%= render 'shared/error_messages' %>
+      <div class="form-group">
+        <%= f.label :budget, class: "control-label" %>
+        <%= f.text_field :budget, class: "form-control" %>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading text-right">Creatives</div>
+        <div class="panel-body">
+          <div class="form-group">
+              <%= f.fields_for :creatives do |creative_form| %>
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <%= creative_form.label :bid, class: "control-label" %>
+                        <%= creative_form.text_field :bid, class: "form-control" %>
+                      </div>
+                      <div class="col-md-6">
+                        <%= creative_form.label :ad_text, class: "control-label" %>
+                        <%= creative_form.text_area :ad_text, class: "form-control" %>
+                      </div>
+                      <div class="col-md-2 text-right">
+                        <%= creative_form.link_to_remove "Remove" %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              <p><%= f.link_to_add "Add a creative", :creatives %></p>
+            </div>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading text-right">Targetings</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <%= f.fields_for :targetings do |targeting_form| %>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <%= targeting_form.label :places, class: "control-label" %>
+                      <%= targeting_form.select :places, 
+                        options_for_select(["Recife - PE", 
+                                            "São Paulo - SP", 
+                                            "Rio de Janeiro - RJ", 
+                                            "Belo Horizonte - MG"]), {}, 
+                        { multiple: true, class: "form-control input" } %>
+                    </div>
+                    <div class="col-md-4">
+                      <%= targeting_form.label :gender, class: "control-label" %>
+                      
+                      <div class="radio">
+                        <label>
+                          <%= targeting_form.radio_button :gender, "Male" %> Male
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <%= targeting_form.radio_button :gender, "Female" %> Female
+                        </label>
+                      </div>
+                      <div class="radio">
+                        <label>
+                          <%= targeting_form.radio_button :gender, "Undetermined" %> Undetermined
+                        </label>
+                      </div>  
+                    </div>  
+                    <div class="col-md-2 text-right">
+                        <%= targeting_form.link_to_remove "Remove" %>
+                    </div>    
+                  </div>
+                </div>    
+              </div>
+            <% end %>
+          </div>
+          <p><%= f.link_to_add "Add a targeting", :targetings %></p>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <% if @ad.new_record? %>
+          <%= f.submit "Create ad", class: "btn btn btn-primary" %>
+        <% else %>  
+          <%= f.submit "Update ad", class: "btn btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="col-md-4"></div>
+</div>

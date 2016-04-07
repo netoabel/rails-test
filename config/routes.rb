@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  root 'ads#index'
+  get 'new_ad' => 'ads#new'
+  resources :ads
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

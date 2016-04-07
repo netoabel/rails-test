@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>List of Ads</h2>
+            </div>
+            <div class="col-md-4">
+                <%= link_to new_ad_path, class: "new-ad-icon pull-right" do %>
+                  <i class="fa fa-plus-square-o fa-lg"></i>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-7"></div>
+</div>
+<div class="list-group">
+    <div class="row">
+        <div class="col-md-5">
+            <% @ads.each do |ad| %>
+                <%= link_to edit_ad_path(ad), class: "list-group-item" do %>
+                    <div class="edit-icon pull-right"><i class="fa fa-pencil"></i></div>
+                    <h4 class="list-group-item-heading"><%= number_to_currency ad.budget, unit: "R$", delimiter: ".", separator: "," =%></h4>
+                    <p class="list-group-item-text small"><%= pluralize ad.creatives.count, "creative" =%>, <%= pluralize ad.targetings.count, "targeting" =%>.</p>
+                <% end %>
+            <% end %>
+            
+            <div class="text-center">
+                <%= will_paginate @ads, renderer: BootstrapPagination::Rails, previous_label: "<", next_label: ">" %>
+            </div>
+        </div>
+        <div class="col-md-7"></div>
+    </div>
+</div>
