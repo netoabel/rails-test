@@ -1,5 +1,5 @@
 ## MiniAds
-### A test application in ruby on rails
+### A test application in Ruby on Rails
 
 This is a web application developed as a test of the Ruby on Rails framework.
 
