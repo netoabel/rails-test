@@ -1,13 +1,9 @@
 class Targeting < ActiveRecord::Base
   belongs_to :ad, inverse_of: :targetings, touch: true
   serialize :places,Array
-  VALID_GENDERS = ['Male', 'Female', 'Undetermined']  # TODO: find some way to store these values
-                                                      # as integers in database without throwing 
-                                                      # an error on invalid values (as with :enum)
-         
+  as_enum :gender, male: 0, female: 1, undetermined: 2
+
   before_validation do |targeting|
     targeting.places.reject!(&:blank?) if targeting.places
-  end       
-  
-  validates :gender, inclusion: { in: VALID_GENDERS }, allow_nil: true
+  end
 end

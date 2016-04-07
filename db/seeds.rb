@@ -1,5 +1,5 @@
 PLACES = ["recife", "são paulo", "rio de janeiro", "belo horizonte"]
-GENDERS = ["Male", "Female", "Undetermined"]
+GENDERS = %i(male female undetermined)
 
 50.times do
   ad_budget  = Faker::Number.decimal(3, 2).to_f

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160406014948) do
+ActiveRecord::Schema.define(version: 20160407200326) do
 
   create_table "ads", force: :cascade do |t|
     t.float    "budget"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20160406014948) do
 
   create_table "targetings", force: :cascade do |t|
     t.text     "places"
-    t.string   "gender"
+    t.integer  "gender_cd"
     t.integer  "ad_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
