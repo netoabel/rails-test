@@ -14,6 +14,7 @@ gem 'faker',                    '1.4.2'
 gem 'will_paginate',            '3.0.7'
 gem 'will_paginate-bootstrap'
 gem "nested_form"
+gem 'client_side_validations'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

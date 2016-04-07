@@ -10,6 +10,18 @@ h2 {
     font-family: Suravaram, serif;
 }
 
+label {
+    font-size: 11px;
+}
+
+.form-control {
+    font-size: 10px;
+}
+
+.section-title {
+    color: #999 !important;
+}
+
 .edit-icon {
     display: none;
 }
@@ -22,6 +34,10 @@ h2 {
 
 .new-ad-icon {
     margin-top: 30px;
+}
+
+.message {
+    color: $brand-danger;
 }
 
 #error_explanation {

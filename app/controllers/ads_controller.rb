@@ -33,7 +33,7 @@ class AdsController < ApplicationController
   end
   
   def ad_params
-    params.require(:ad).permit(:budget, creatives_attributes: [:id, :bid, :ad_text], 
-                                        targetings_attributes: [:id, :gender, :places])
+    params.require(:ad).permit(:budget, creatives_attributes: [:id, :bid, :ad_text, :_destroy], 
+                                        targetings_attributes: [:id, :gender, :_destroy, places: []])
   end
 end

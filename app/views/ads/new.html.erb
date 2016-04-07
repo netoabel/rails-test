@@ -1,8 +1,14 @@
-<h2>New Ad</h2>
+<% if @ad.new_record? %>
+  <% provide(:title, "Create new Ad") %>
+  <h2>New Ad</h2>
+<% else %>
+  <% provide(:title, "Edit Ad") %>
+  <h2>Edit Ad</h2>
+<% end %>
 
 <div class="row">
   <div class="col-md-8">
-    <%= nested_form_for @ad do |f| %>
+    <%= nested_form_for @ad, validate: true do |f| %>
       <%= render 'shared/error_messages' %>
       <div class="form-group">
         <%= f.label :budget, class: "control-label" %>
@@ -10,10 +16,10 @@
       </div>
       
       <div class="panel panel-default">
-        <div class="panel-heading text-right">Creatives</div>
+        <div class="panel-heading text-right section-title">Creatives</div>
         <div class="panel-body">
           <div class="form-group">
-              <%= f.fields_for :creatives do |creative_form| %>
+              <%= f.fields_for :creatives, validate: true do |creative_form| %>
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <div class="row">
@@ -38,21 +44,21 @@
       </div>
       
       <div class="panel panel-default">
-        <div class="panel-heading text-right">Targetings</div>
+        <div class="panel-heading text-right section-title">Targetings</div>
         <div class="panel-body">
           <div class="form-group">
-            <%= f.fields_for :targetings do |targeting_form| %>
+            <%= f.fields_for :targetings, validate: true do |targeting_form| %>
               <div class="panel panel-default">
                 <div class="panel-body">
                   <div class="row">
                     <div class="col-md-6">
                       <%= targeting_form.label :places, class: "control-label" %>
                       <%= targeting_form.select :places, 
-                        options_for_select(["Recife - PE", 
-                                            "São Paulo - SP", 
-                                            "Rio de Janeiro - RJ", 
-                                            "Belo Horizonte - MG"]), {}, 
-                        { multiple: true, class: "form-control input" } %>
+                        options_for_select([["Recife - PE", "recife"],
+                                            ["São Paulo - SP", "são paulo"], 
+                                            ["Rio de Janeiro - RJ", "rio de janeiro"], 
+                                            ["Belo Horizonte - MG", "belo horizonte"]], selected: targeting_form.object.places), {}, 
+                                            { multiple: true, class: "form-control input" } %>
                     </div>
                     <div class="col-md-4">
                       <%= targeting_form.label :gender, class: "control-label" %>
