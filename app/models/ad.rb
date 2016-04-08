@@ -10,6 +10,5 @@ class Ad < ActiveRecord::Base
     validates :creatives, presence: true
     validates :targetings, presence: true
     
-    validates :budget, presence: true
-    validates :budget, numericality: { greater_than: 0 }, if: Proc.new { |ad| ad.budget }
+    validates :budget, presence: true, numericality: { greater_than: 0}
 end
