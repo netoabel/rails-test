@@ -23,5 +23,10 @@ class CreativeTest < ActiveSupport::TestCase
   test "should not allow a bid greater than the ad budget" do
     @creative.bid = 1001
     assert_not @creative.valid?
+  end  
+  
+  test "should allow a bid equal to the ad budget" do
+    @creative.bid = 1000
+    assert_not @creative.valid?
   end
 end
